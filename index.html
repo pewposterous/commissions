@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pewp Commissions</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0f1014;
+    --surface: #1a1b22;
+    --surface-hover: #22232e;
+    --border: #2a2b38;
+    --border-accent: #3d3e50;
+    --text: #e2e0dc;
+    --text-muted: #7c7b85;
+    --accent: #c8a46e;
+    --accent-glow: #c8a46e33;
+    --accent-soft: #c8a46e18;
+    --radius: 10px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+  a:hover { border-bottom-color: var(--accent); }
+
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 3rem 1.25rem 4rem;
+  }
+
+  /* ── Header ── */
+  header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  header h1 {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: 3rem;
+    letter-spacing: -0.02em;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+    line-height: 1;
+  }
+  header .tagline {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .status-badge {
+    display: inline-block;
+    padding: 0.4rem 0.95rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid;
+    background: var(--surface);
+  }
+  .status-badge.is-open {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--accent-soft);
+  }
+  .status-badge.is-closed {
+    color: var(--text-muted);
+    border-color: var(--border-accent);
+  }
+
+  /* ── Section blocks ── */
+  section { margin-bottom: 2.75rem; }
+  section h2 {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: 1.75rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+  section h2 small {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    font-style: italic;
+    margin-left: 0.4rem;
+  }
+
+  /* ── Pricing ── */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .tier {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.2rem 1.3rem;
+  }
+  .tier h3 {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: 1.25rem;
+    color: var(--text);
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border);
+    letter-spacing: 0.01em;
+  }
+  .tier ul { list-style: none; }
+  .tier li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.4rem 0;
+    border-bottom: 1px dashed var(--border);
+    font-size: 0.95rem;
+  }
+  .tier li:last-child { border-bottom: none; }
+  .tier li .len { color: var(--text-muted); }
+  .tier li .price {
+    color: var(--accent);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .surcharge-note {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    font-style: italic;
+    text-align: center;
+    margin-top: 0.4rem;
+  }
+
+  /* ── Conditions ── */
+  .conditions {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.2rem 1.4rem 1.2rem 1.6rem;
+  }
+  .conditions ul { list-style: none; }
+  .conditions li {
+    position: relative;
+    padding-left: 1.2rem;
+    padding-block: 0.35rem;
+    font-size: 0.95rem;
+  }
+  .conditions li::before {
+    content: '·';
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1;
+    position: absolute;
+    left: 0;
+    top: 0.4rem;
+  }
+
+  /* ── Specifications ── */
+  .specs-note {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+  .spec-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.3rem;
+    margin-bottom: 0.7rem;
+  }
+  .spec-block h3 {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: var(--accent);
+    margin-bottom: 0.55rem;
+  }
+  .spec-block dl { display: grid; row-gap: 0.45rem; }
+  .spec-block dt {
+    font-weight: 700;
+    color: var(--text);
+    display: inline;
+    font-size: 0.92rem;
+  }
+  .spec-block dd {
+    display: inline;
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    margin-left: 0.35rem;
+  }
+  .spec-block .row { line-height: 1.5; }
+  .spec-block.plain p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+  }
+
+  /* ── Sound ── */
+  .sound-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.2rem 1.4rem;
+  }
+  .sound-block p {
+    font-size: 0.95rem;
+    margin-bottom: 0.55rem;
+  }
+  .sound-block p:last-child { margin-bottom: 0; }
+  .sound-block .muted { color: var(--text-muted); font-size: 0.88rem; font-style: italic; }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 1.8rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+  }
+  footer .payment {
+    font-size: 0.95rem;
+    color: var(--text);
+    margin-bottom: 0.35rem;
+  }
+  footer .updated {
+    font-size: 0.78rem;
+    font-style: italic;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 520px) {
+    header h1 { font-size: 2.3rem; }
+    .container { padding: 2rem 1rem 3rem; }
+    section h2 { font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <h1>Pewp Commissions</h1>
+    <p class="tagline">Animation commissions &middot; pricing &amp; info</p>
+    <span class="status-badge" id="status">● —</span>
+  </header>
+
+  <section id="pricing">
+    <h2>Pricing</h2>
+    <div class="pricing-grid">
+      <div class="tier">
+        <h3>Animations &middot; 30 FPS</h3>
+        <ul>
+          <li><span class="len">8–12 seconds</span><span class="price">€120</span></li>
+          <li><span class="len">14–16 seconds</span><span class="price">€160</span></li>
+          <li><span class="len">18–22 seconds</span><span class="price">€210</span></li>
+          <li><span class="len">28–32 seconds</span><span class="price">€270</span></li>
+          <li><span class="len">58–62 seconds</span><span class="price">€600</span></li>
+        </ul>
+      </div>
+      <div class="tier">
+        <h3>Increased Frame Rate &middot; 60 FPS</h3>
+        <ul>
+          <li><span class="len">8–12 seconds</span><span class="price">€150</span></li>
+          <li><span class="len">14–16 seconds</span><span class="price">€200</span></li>
+          <li><span class="len">18–22 seconds</span><span class="price">€300</span></li>
+          <li><span class="len">28–32 seconds</span><span class="price">€350</span></li>
+          <li><span class="len">58–62 seconds</span><span class="price">€1000</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="surcharge-note">Private commissions have a 100% surcharge.</p>
+  </section>
+
+  <section id="how-it-works">
+    <h2>How it works</h2>
+    <div class="conditions">
+      <ul>
+        <li>Length is flexible.</li>
+        <li>References aren't necessary but help a lot.</li>
+        <li>Providing what you'd like in your initial message helps me understand workload and respond quickly.</li>
+        <li>I don't do fluid sims.</li>
+        <li>Check the Model tab (coming soon) for available characters. Ones I don't have can be requested but may be declined.</li>
+        <li>You can provide a model but I'll check it first. I will not use stolen models.</li>
+        <li>If a male is used, I'll do a black-and-white version as always.</li>
+        <li>Futa animations are welcome.</li>
+        <li>Monster/beast must pass Patreon guidelines &mdash; see the <a href="https://www.patreon.com/policy/guidelines" target="_blank" rel="noopener">Bestiality section</a>.</li>
+        <li>Payment via Patreon, PayPal, or SubscribeStar.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="specifications">
+    <h2>Specifications <small>examples only &middot; not required &middot; feel free to give creative liberty</small></h2>
+    <p class="specs-note">Anything clothing-related that isn't from the game adds a small surcharge.</p>
+
+    <div class="spec-block">
+      <h3>Clothing</h3>
+      <dl>
+        <div class="row"><dt>Fully Clothed:</dt><dd>game clothing, casual, streetwear, etc.</dd></div>
+        <div class="row"><dt>Partially Dressed:</dt><dd>disheveled (clothes on but messy), half-undressed (shirt off / pants on), draped (only a sheet or towel), etc.</dd></div>
+        <div class="row"><dt>Revealing:</dt><dd>scantily clad, micro-bikini, lingerie, see-through / sheer, strappy / bondage-style, etc.</dd></div>
+        <div class="row"><dt>Minimal:</dt><dd>pasties / tape, strategic coverage (clothing or hands blocking), implied nudity, etc.</dd></div>
+        <div class="row"><dt>Nude:</dt><dd>just uhhh, nude.</dd></div>
+      </dl>
+    </div>
+
+    <div class="spec-block plain">
+      <h3>Scene</h3>
+      <p>Neutral background, outdoors, indoors, room, bed, couch, floor, tiles, carpet, etc.</p>
+      <p>Day / night &middot; bright / dark &middot; etc.</p>
+    </div>
+
+    <div class="spec-block">
+      <h3>Pacing</h3>
+      <dl>
+        <div class="row"><dt>Slow:</dt><dd>tender, deliberate, teasing, weighty, lingering, etc.</dd></div>
+        <div class="row"><dt>Fast:</dt><dd>high-energy, explosive, relentless, frantic, etc.</dd></div>
+        <div class="row"><dt>Sensual:</dt><dd>passionate, intimate, soft, etc.</dd></div>
+        <div class="row"><dt>Rough:</dt><dd>aggressive, high-impact, domineering, etc.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="sound">
+    <h2>Sound</h2>
+    <div class="sound-block">
+      <p>I'm currently learning how to do sound but I'm new and still learning.</p>
+      <p>You can hire someone more experienced and add their bill to the total. VA is included in the base price.</p>
+      <p>LERICO's current rates: <a href="https://imgur.com/gallery/lericos-current-rates-dQB8Wby" target="_blank" rel="noopener">view on imgur</a>.</p>
+      <p class="muted">More options may be added in the future.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p class="payment">Payment via Patreon &middot; PayPal &middot; SubscribeStar</p>
+  </footer>
+
+</div>
+
+<script>
+  // ╔═══════════════════════════════════════════════════════════╗
+  // ║  Flip this when you open or close commissions.            ║
+  // ║  Edit it directly on GitHub:                              ║
+  // ║    github.com/pewposterous/commissions → index.html → ✎   ║
+  // ╚═══════════════════════════════════════════════════════════╝
+  const COMMISSIONS_OPEN = true;
+
+  const badge = document.getElementById('status');
+  badge.textContent = COMMISSIONS_OPEN ? '● Currently open' : '● Currently closed';
+  badge.className = 'status-badge ' + (COMMISSIONS_OPEN ? 'is-open' : 'is-closed');
+</script>
+
+</body>
+</html>
