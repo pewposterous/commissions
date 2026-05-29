@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Models · Pewp Commissions</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0f1014;
+    --surface: #1a1b22;
+    --surface-hover: #22232e;
+    --border: #2a2b38;
+    --border-accent: #3d3e50;
+    --text: #e2e0dc;
+    --text-muted: #7c7b85;
+    --accent: #c8a46e;
+    --accent-glow: #c8a46e33;
+    --accent-soft: #c8a46e18;
+    --radius: 10px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+  a:hover { border-bottom-color: var(--accent); }
+
+  .container {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 3rem 1.25rem 4rem;
+  }
+
+  /* ── Header ── */
+  header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  header h1 {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: 3rem;
+    letter-spacing: -0.02em;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+    line-height: 1;
+  }
+  header .tagline {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-bottom: 0;
+  }
+
+  /* ── Nav ── */
+  .nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.92rem;
+  }
+  .nav a {
+    color: var(--text-muted);
+    border-bottom: 1px solid transparent;
+    padding: 0.15rem 0;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .nav a:hover { color: var(--accent); border-bottom-color: transparent; }
+  .nav a.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  .nav .sep { color: var(--border-accent); }
+
+  /* ── Models grid ── */
+  .models-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .game-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .game-card h3 {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: var(--accent);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.15;
+  }
+  .characters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+  .chip {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    background: var(--accent-soft);
+    border: 1px solid transparent;
+    border-radius: 999px;
+    color: var(--text);
+    font-size: 0.85rem;
+    line-height: 1.3;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .chip:hover {
+    border-color: var(--accent);
+    background: var(--accent-glow);
+  }
+
+  /* ── Legend (request note) ── */
+  .request-note {
+    background: var(--surface);
+    border: 1px solid var(--border-accent);
+    border-radius: var(--radius);
+    padding: 1rem 1.3rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+  .request-note strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 1.8rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+  }
+  footer .payment {
+    font-size: 0.95rem;
+    color: var(--text);
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 520px) {
+    header h1 { font-size: 2.3rem; }
+    .container { padding: 2rem 1rem 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <h1>Pewp Commissions</h1>
+    <nav class="nav">
+      <a href="index.html">Pricing &amp; Info</a>
+      <span class="sep">·</span>
+      <a href="models.html" class="active">Models</a>
+    </nav>
+    <p class="tagline">Characters I currently have models for</p>
+  </header>
+
+  <div class="models-grid">
+
+    <div class="game-card">
+      <h3>Baldurs Gate</h3>
+      <div class="characters">
+        <span class="chip">Shadowheart</span>
+        <span class="chip">Minthara</span>
+        <span class="chip">Mizora</span>
+        <span class="chip">Orin</span>
+        <span class="chip">Nightsong (Aylin)</span>
+        <span class="chip">Isobel</span>
+        <span class="chip">Male Mindflayer</span>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <h3>Cyberpunk</h3>
+      <div class="characters">
+        <span class="chip">V</span>
+        <span class="chip">Judy</span>
+        <span class="chip">Aurore Cassel</span>
+        <span class="chip">Cheri Nowlin</span>
+        <span class="chip">Hanako</span>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <h3>Death Stranding</h3>
+      <div class="characters">
+        <span class="chip">Mama</span>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <h3>Detroit: Become Human</h3>
+      <div class="characters">
+        <span class="chip">Chloe</span>
+        <span class="chip">Kara</span>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <h3>Devil May Cry</h3>
+      <div class="characters">
+        <span class="chip">Nico</span>
+        <span class="chip">Lady</span>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <h3>Dragon Age</h3>
+      <div class="characters">
+        <span class="chip">Morrigan</span>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <h3>Expedition 33</h3>
+      <div class="characters">
+        <span class="chip">Lune</span>
+        <span class="chip">Sciel</span>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <h3>Final Fantasy</h3>
+      <div class="characters">
+        <span class="chip">Tifa</span>
+        <span class="chip">Aerith</span>
+        <span class="chip">Yuffie</span>
+        <span class="chip">Scarlet</span>
+        <span class="chip">Benedikta</span>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <h3>The First Descendant</h3>
+      <div class="characters">
+        <span class="chip">Bunny</span>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <h3>Hogwarts</h3>
+      <div class="characters">
+        <span class="chip">Mirabel Garlick</span>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <h3>Horizon</h3>
+      <div class="characters">
+        <span class="chip">Aloy</span>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <h3>Last of Us</h3>
+      <div class="characters">
+        <span class="chip">Ellie</span>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <h3>Mass Effect LE</h3>
+      <div class="characters">
+        <span class="chip">Liara</span>
+        <span class="chip">Miranda</span>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <h3>Metal Gear</h3>
+      <div class="characters">
+        <span class="chip">Quiet</span>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <h3>Monster Hunter</h3>
+      <div class="characters">
+        <span class="chip">Alma</span>
+        <span class="chip">Gemma</span>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <h3>Mortal Kombat</h3>
+      <div class="characters">
+        <span class="chip">Casse (MK11)</span>
+        <span class="chip">Sheeva (Futa)</span>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <h3>Resident Evil</h3>
+      <div class="characters">
+        <span class="chip">Ada Wong</span>
+        <span class="chip">Ashley</span>
+        <span class="chip">Claire</span>
+        <span class="chip">Jill</span>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <h3>Silent Hill</h3>
+      <div class="characters">
+        <span class="chip">Hinako</span>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <h3>Street Fighter</h3>
+      <div class="characters">
+        <span class="chip">Juri</span>
+        <span class="chip">Cammy</span>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <h3>Tekken</h3>
+      <div class="characters">
+        <span class="chip">Reina</span>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <h3>Tomb Raider</h3>
+      <div class="characters">
+        <span class="chip">Lara Croft</span>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <h3>Uncharted</h3>
+      <div class="characters">
+        <span class="chip">Chloe</span>
+        <span class="chip">Elena</span>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <h3>Until Dawn</h3>
+      <div class="characters">
+        <span class="chip">Sam</span>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <h3>The Witcher</h3>
+      <div class="characters">
+        <span class="chip">Yennefer</span>
+        <span class="chip">Ciri</span>
+        <span class="chip">Triss</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="request-note">
+    <strong>Don't see a character you want?</strong>
+    You can request models not listed &mdash; they'll just take time to make.
+    You can also provide your own model, but I'll check it first and won't use stolen models.
+  </div>
+
+  <footer>
+    <p class="payment">Payment via Patreon &middot; PayPal &middot; SubscribeStar</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
