@@ -150,6 +150,43 @@
     margin-top: 0.4rem;
   }
 
+  /* ── Initial message checklist ── */
+  .initial-list {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.2rem 1.4rem 1.2rem 2.7rem;
+  }
+  .initial-list ol { list-style: none; counter-reset: stepcounter; }
+  .initial-list li {
+    position: relative;
+    padding: 0.45rem 0;
+    font-size: 0.95rem;
+    counter-increment: stepcounter;
+    line-height: 1.55;
+  }
+  .initial-list li::before {
+    content: counter(stepcounter);
+    position: absolute;
+    left: -1.7rem;
+    top: 0.55rem;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.95rem;
+    width: 1.2rem;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+  }
+  .initial-list strong { color: var(--text); font-weight: 700; }
+  .initial-list em { color: var(--text-muted); font-style: italic; }
+  .initial-list .optional {
+    color: var(--text-muted);
+    font-style: italic;
+    font-size: 0.82rem;
+    font-weight: 400;
+    margin-left: 0.2rem;
+  }
+
   /* ── Conditions ── */
   .conditions {
     background: var(--surface);
@@ -290,6 +327,19 @@
       </div>
     </div>
     <p class="surcharge-note">Private commissions have a 100% surcharge.</p>
+  </section>
+
+  <section id="initial-message">
+    <h2>In your initial message</h2>
+    <div class="initial-list">
+      <ol>
+        <li><strong>Cast</strong> &mdash; who's involved. <em>e.g. "Yennefer + 1 male", "Ciri + Triss", "Ciri + 3 males".</em></li>
+        <li><strong>Length &amp; frame rate</strong> &mdash; pick a tier from the pricing above. <em>e.g. "18&ndash;22 seconds @ 30 fps".</em></li>
+        <li><strong>Pose / action</strong> &mdash; a sentence or two describing what's happening.</li>
+        <li><strong>References</strong><span class="optional">(optional)</span> &mdash; image links or a description of what you have in mind.</li>
+        <li><strong>Specifics</strong><span class="optional">(optional)</span> &mdash; anything from the Specifications below (clothing, scene, pacing) you want me to nail.</li>
+      </ol>
+    </div>
   </section>
 
   <section id="how-it-works">
