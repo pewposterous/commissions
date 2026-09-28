@@ -234,6 +234,82 @@
     top: 0.4rem;
   }
 
+  /* ── Process timeline ── */
+  .process {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.3rem 1.4rem 1.3rem 1.4rem;
+  }
+  .process ol { list-style: none; counter-reset: proc; }
+  .process li {
+    position: relative;
+    padding: 0 0 1.15rem 2.6rem;
+    counter-increment: proc;
+  }
+  .process li:last-child { padding-bottom: 0; }
+  .process li::before {
+    content: counter(proc);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    border: 1px solid var(--border-accent);
+    background: var(--bg);
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-variant-numeric: tabular-nums;
+  }
+  .process li::after {
+    content: '';
+    position: absolute;
+    left: calc(0.875rem - 0.5px);
+    top: 1.9rem;
+    bottom: 0.15rem;
+    width: 1px;
+    background: var(--border);
+  }
+  .process li:last-child::after { display: none; }
+  .process h3 {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: var(--text);
+    line-height: 1.75rem;
+    margin-bottom: 0.15rem;
+  }
+  .process p { font-size: 0.93rem; color: var(--text-muted); }
+  .process .tag {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 0.1rem 0.5rem;
+    margin-left: 0.45rem;
+    border-radius: 999px;
+    border: 1px solid var(--border-accent);
+    color: var(--text-muted);
+    vertical-align: 0.2em;
+  }
+  .process li.pay::before {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+  }
+  .process li.pay h3 { color: var(--accent); }
+  .process li.pay .tag {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--accent-soft);
+  }
+
   /* ── Specifications ── */
   .specs-note {
     color: var(--text-muted);
@@ -384,6 +460,38 @@
         <li>Monster/beast must pass Patreon guidelines &mdash; see the <a href="https://www.patreon.com/policy/guidelines" target="_blank" rel="noopener">Bestiality section</a>.</li>
         <li>Payment via Patreon, PayPal, or SubscribeStar.</li>
       </ul>
+    </div>
+  </section>
+
+  <section id="process">
+    <h2>Process</h2>
+    <div class="process">
+      <ol>
+        <li>
+          <h3>Posing</h3>
+          <p>Once your commission is accepted, I'll start posing the animation. If the pose is very specific, I'll send WIPs for feedback before continuing.</p>
+        </li>
+        <li>
+          <h3>Base animation <span class="tag">1&ndash;2 WIPs</span></h3>
+          <p>Once the base is down, I'll send one or two more WIPs so you can give feedback.</p>
+        </li>
+        <li>
+          <h3>Final WIP <span class="tag">confirmation</span></h3>
+          <p>I'll finish the animation and send a final WIP for you to confirm.</p>
+        </li>
+        <li class="pay">
+          <h3>Payment <span class="tag">required here</span></h3>
+          <p>Payment is required at this point, as the animation goes to a voice actor who needs to be paid.</p>
+        </li>
+        <li>
+          <h3>Voice acting <span class="tag">a few days &ndash; 1+ week</span></h3>
+          <p>VA can take anywhere from a few days to over a week.</p>
+        </li>
+        <li>
+          <h3>Post &amp; delivery</h3>
+          <p>Once I get the VA back, I'll move on to post and hand it over once it's done~</p>
+        </li>
+      </ol>
     </div>
   </section>
 
